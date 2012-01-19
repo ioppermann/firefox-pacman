@@ -1,0 +1,6 @@
+content	pacman	jar:chrome/pacman.jar!/content/
+locale	pacman	en	jar:chrome/pacman.jar!/locale/en/
+locale	pacman	de	jar:chrome/pacman.jar!/locale/de/
+skin	pacman	classic/1.0	jar:chrome/pacman.jar!/skin/
+
+overlay	chrome://browser/content/browser.xul	chrome://pacman/content/pacmanOverlay.xul

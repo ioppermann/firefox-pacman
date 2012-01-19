@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE dialog SYSTEM "chrome://pacman/locale/pacman.dtd">
+
+<dialog id="pacman-highscores-name"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	title="&pacman.hs-name-title;"
+	buttons="accept"
+	ondialogaccept="pacmanSetHighscore();"
+	onunload="//pacmanShowHighscores();">
+
+	<script type="application/x-javascript" src="chrome://pacman/content/scripts/preferences.js"/>
+	<script type="application/x-javascript" src="chrome://pacman/content/scripts/highscores.js"/>
+	<script type="application/x-javascript" src="chrome://pacman/content/scripts/windows.js"/>
+
+<vbox>
+	<hbox>
+		<spacer flex="1"/>
+		<description style="font-weight: bold">&pacman.hs-name-congrat;</description>
+		<spacer flex="1"/>
+	</hbox>
+	<description>&pacman.hs-name-bla1;</description>
+	<spacer height="16"/>
+	<description>&pacman.hs-name-bla2;</description>
+	<textbox id="pacman-highscore-name" maxlength="32"/>
+</vbox>
+
+
+</dialog>

@@ -1,0 +1,6 @@
+content	pacman	chrome/content/
+locale	pacman	en	chrome/locale/en/
+locale	pacman	de	chrome/locale/de/
+skin	pacman	classic/1.0	chrome/skin/
+
+overlay	chrome://browser/content/browser.xul	chrome://pacman/content/pacmanOverlay.xul

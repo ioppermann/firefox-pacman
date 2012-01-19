@@ -1,0 +1,34 @@
+<!ENTITY pacman.new "New Game">
+<!ENTITY pacman.highscores "Highscores...">
+<!ENTITY pacman.sound "Sound off">
+<!ENTITY pacman.pause "Pause">
+<!ENTITY pacman.about "About...">
+<!ENTITY pacman.options "Options">
+
+<!ENTITY pacman.speed-slow "Slow">
+<!ENTITY pacman.speed-normal "Normal">
+<!ENTITY pacman.speed-fast "Fast">
+<!ENTITY pacman.speed-insane "Insane">
+
+<!ENTITY pacman.hs-title "Highscores">
+<!ENTITY pacman.hs-titlebig "H I G H S C O R E S">
+<!ENTITY pacman.hs-place "Place">
+<!ENTITY pacman.hs-name "Name">
+<!ENTITY pacman.hs-score "Score">
+<!ENTITY pacman.hs-level "Level">
+<!ENTITY pacman.hs-name-title "New Highscore">
+<!ENTITY pacman.hs-name-congrat "C O N G R A T U L A T I O N">
+<!ENTITY pacman.hs-name-bla1 "You made it into the highscore list with your score!">
+<!ENTITY pacman.hs-name-bla2 "Please enter your name (32 letters max.)">
+
+<!ENTITY pacman.about-title "About Pacman">
+
+<!ENTITY pacman.key-pause "p">
+<!ENTITY pacman.key-sound "s">
+<!ENTITY pacman.key-highscores "h">
+<!ENTITY pacman.key-new "n">
+
+<!ENTITY pacman.key-pause-menu "P">
+<!ENTITY pacman.key-sound-menu "S">
+<!ENTITY pacman.key-highscores-menu "H">
+<!ENTITY pacman.key-new-menu "N">

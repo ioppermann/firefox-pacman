@@ -1,0 +1,105 @@
+1. Das Bild etwas höher machen, damit oben die Packman-Symbole noch Platz haben.
+2. Die Geister malen
+
+
+Einen einzigen Tastendruck-Empfänger machen, der je nach Situation die zu drücken
+erlaubten Tasten bestimmen kann.
+
+
+Es gibt zwei Arten, ein Spiel neu zu beginnen:
+
+1. Ein neuer Level beginnt: (restart)
+	- Alle Figuren sind auf ihren Ausgangspositionen
+	- Alle Punkte und Pillen sind sichtbar
+
+2. Ein Level wird fortgesetzt: (reset)
+	- Alle Figuren sind auf ihren Ausgangspositionen
+	- die noch vorhandenen Punkte und Pillen werden nicht verändert
+
+
+
+Programmablauf
+
+- onload (Öffnen des Spieles)
+	- den Soundserver initialisieren
+		- ist das Abspielen eines Sounds asynchron?
+		- die Variable soundplayer erzeugen
+		- die URLs der einzelnen Sounds erstellen
+		- jeder Sound hat eine eigene ID, die zum abspielen des Sound mitgegeben werden muss
+	- die Waypoints initialisieren
+		- aus der Map die Waypoint-Struktur erzeugen
+		- zählen, wieviele Punkte gegessen werden müssen, um den Level zu beenden
+	- die Spielfiguren initialisieren
+		- Packman an dem Waypoint vom Typ 4 erstellen
+		- Geister an den Waypoints vom Typ 5 erstellen
+	- das HUD initialisieren
+		- Anzahl Punkte auf 0 setzen
+		- Anzahl weiterer Leben auf 2 setzen
+		- Level auf 1 setzen
+	- das Spiel neu starten (restartGame)
+
+- restartGame
+	- resetWaypoints
+		- Alle Waypoints vom Typ 1 (dot) und 2 (pille) auf essbar (= sichtbar) setzen
+		- die Waypoints durchgehen und ggf. zeichnen
+	- resetPackman
+		- Packman auf seine Startposition setzen
+	- resetGeister
+		- die Geister auf deren Startpositionen setzen
+		- den Status der Geister zurücksetzen
+	- resetVelocity
+		- die Spielgeschwindigkeit in Abhängigkeit des Levels erhöhen
+	- update
+
+- resetGame
+	- resetPackman
+		- Packman auf seine Startposition setzen
+	- resetGeister
+		- die Geister auf deren Startpositionen setzen
+		- den Status der Geister zurücksetzen
+	- update
+
+- update
+	- Packman neu zeichen
+	- Geister neu zeichnen
+	- HUD neu zeichnen
+
+
+Spielverlauf
+
+- gameLoop
+	- Packman updaten
+	- Packman fragen, was er gerade gegessen hat
+	- auf die Antwort reagieren
+		- gegessene Punkte zählen
+			- bei allen gegessenen Punkten
+				- Level um 1 erhöhen
+				- Spiel neu starten (restartGame)
+		- dot -> Punkte um 10 erhöhen
+		- pille -> Punkte um 50 erhöhen
+			- geistcount auf 0 setzen
+			- alle Geister als essbar markieren
+				- die Geister reagieren jetzt repulsiv
+				- Timeout
+		- geist -> Punkte gemäss geistcount erhöhen
+		- bonus -> Punkte gemäss Bonus erhöhen
+		- einen entsprechenden Soundeffekt abspielen
+	- Punktzahl beachten (vorher/nachher), um bestimmen zu können, ob ein Extraleben fällig wird
+	- Geister updaten
+		- Ausschau nach Packman halten
+			- falls er gesehen wurde, diese Richtung als preferred_direction merken
+			- diese Richtung beibehalten, bis
+				- Packman in einer anderen Richtung gesichtet wurde, oder ...
+				- ... bis es in der preferred_direction nicht mehr weitergeht
+	- Geister fragen, was sie gerade gegessen haben
+		- Packman
+			- Animation abspielen
+			- Sound abspielen
+			- Anzahl Leben um 1 verringern
+				- Wenn die Anzahl der Leben gleich 0 ist, das Spiel beenden
+	- update (Figuren und HUD neu zeichnen)
+	- Timeout für nächsten Durchgang durch den Loop setzen
+
+- Spiel beenden
+	- Punkte abfragen, und schauen, obs für die Highscore-Liste reicht
+	- ggf. in die Highscoreliste eintragen (Datum, Name, Punkte)

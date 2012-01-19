@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<script type="application/x-javascript" src="chrome://packman/content/packman.js"/>
+
+<window id="packman-main-window" title="Packman" width="800" height="600"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<commandset id="packman-commands">
+		<command id="cmd.new" oncommand="packmanNewGame();"/>
+		<command id="cmd.pause" oncommand="packmanTogglePause();"/>
+		<command id="cmd.settings" oncommand="packmanShowSettings();"/>
+
+		<command id="cmd.left" oncommand="packman.moveLeft();"/>
+		<command id="cmd.right" oncommand="packman.moveRight();"/>
+		<command id="cmd.down" oncommand="packman.moveDown();"/>
+		<command id="cmd.up" oncommand="packman.moveUp();"/>
+	</commandset>
+
+	<keyset id="packman-keys">
+		<key id="key.pause" key="p" command="cmd.pause"/>
+		<key id="key.pause2" keycode="VK_PAUSE" command="cmd.pause"/>
+
+		<key id="key.left" keycode="VK_LEFT" command="cmd.left"/>
+		<key id="key.right" keycode="VK_RIGHT" command="cmd.right"/>
+		<key id="key.down" keycode="VK_DOWN" command="cmd.down"/>
+		<key id="key.up" keycode="VK_UP" command="cmd.up"/>
+	</keyset>
+
+	<toolbar id="packman-toolbar">
+		<toolbarbutton id="btn.new" label="Neues Spiel" command="cmd.new"/>
+		<toolbarbutton id="btn.pause" label="Einstellungen" command="cmd.settings"/>
+	</toolbar>
+
+	<vbox id="packman-main">
+		<hbox><description>blabla</description></hbox>
+  		<hbox><description>spielfeld</description></hbox>
+	</vbox>
+</window>

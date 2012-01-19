@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE dialog SYSTEM "chrome://pacman/locale/pacman.dtd">
+
+<dialog id="pacman-highscores"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	title="&pacman.hs-title;"
+	buttons="accept"
+	onload="pacmanLoadHighscores();">
+
+	<script type="application/x-javascript" src="chrome://pacman/content/scripts/preferences.js"/>
+	<script type="application/x-javascript" src="chrome://pacman/content/scripts/highscores.js"/>
+
+<vbox flex="1" width="300" style="text-align: center">
+	<description style="font-weight: bold">&pacman.hs-titlebig;</description>
+	<spacer height="1em"/>
+	<listbox id="highscores-list">
+		<listhead>
+			<listheader label="&pacman.hs-place;"/>
+			<listheader label="&pacman.hs-name;"/>
+			<listheader label="&pacman.hs-score;"/>
+			<listheader label="&pacman.hs-level;"/>
+		</listhead>
+
+		<listcols>
+			<listcol/>
+			<listcol flex="1"/>
+			<listcol/>
+			<listcol/>
+		</listcols>
+	</listbox>
+</vbox>
+
+</dialog>

@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="pacman.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://pacman/locale/pacman.dtd">
+
+<window id="pacman-main-window" title="Pacman"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	onload="pacmanInitGame()"
+	onclose="pacmanQuitGame()"
+	onblur="pacmanPauseGame()">
+
+	<stringbundleset id="stringbundleset">
+		<stringbundle id="pacman-stringbundle" src="chrome://pacman/locale/pacman.properties"/>
+	</stringbundleset>
+
+	<script type="application/x-javascript" src="chrome://pacman/content/scripts/map.js"/>
+	<script type="application/x-javascript" src="chrome://pacman/content/scripts/waypoint.js"/>
+	<script type="application/x-javascript" src="chrome://pacman/content/scripts/pacman.js"/>
+	<script type="application/x-javascript" src="chrome://pacman/content/scripts/geist.js"/>
+	<script type="application/x-javascript" src="chrome://pacman/content/scripts/hud.js"/>
+	<script type="application/x-javascript" src="chrome://pacman/content/scripts/sound.js"/>
+	<script type="application/x-javascript" src="chrome://pacman/content/scripts/bonus.js"/>
+	<script type="application/x-javascript" src="chrome://pacman/content/scripts/preferences.js"/>
+	<script type="application/x-javascript" src="chrome://pacman/content/scripts/highscores.js"/>
+	<script type="application/x-javascript" src="chrome://pacman/content/scripts/windows.js"/>
+	<script type="application/x-javascript" src="chrome://pacman/content/scripts/pacmangame.js"/>
+
+	<commandset id="pacman-commands">
+		<command id="cmd.new" oncommand="pacmanNewGame();"/>
+		<command id="cmd.pause" oncommand="pacmanTogglePause();"/>
+		<command id="cmd.highscores" oncommand="pacmanShowHighscores();"/>
+
+		<command id="cmd.left" oncommand="pacmanMoveLeft();"/>
+		<command id="cmd.right" oncommand="pacmanMoveRight();"/>
+		<command id="cmd.down" oncommand="pacmanMoveDown();"/>
+		<command id="cmd.up" oncommand="pacmanMoveUp();"/>
+
+		<command id="cmd.sound" oncommand="pacmanToggleSound();"/>
+
+		<command id="cmd.about" oncommand="pacmanInfo();"/>
+	</commandset>
+
+	<keyset id="pacman-keys">
+		<key id="key.new" key="&pacman.key-new;" command="cmd.new"/>
+		<key id="key.highscores" key="&pacman.key-highscores;" command="cmd.highscores"/>
+		<key id="key.pause" key="&pacman.key-pause;" command="cmd.pause"/>
+		<key id="key.pause2" keycode="VK_PAUSE" command="cmd.pause"/>
+
+		<key id="key.left" keycode="VK_LEFT" command="cmd.left"/>
+		<key id="key.right" keycode="VK_RIGHT" command="cmd.right"/>
+		<key id="key.down" keycode="VK_DOWN" command="cmd.down"/>
+		<key id="key.up" keycode="VK_UP" command="cmd.up"/>
+
+		<key id="key.sound" key="&pacman.key-sound;" command="cmd.sound"/>
+	</keyset>
+
+	<menubar id="pacman-toolbar">
+		<menu id="btn.new" label="&pacman.new;" accesskey="&pacman.key-new-menu;">
+			<menupopup>
+				<menuitem id="pacman-speed-slow" type="radio" name="pacmanspeed" label="&pacman.speed-slow;" oncommand="pacmanNewGame(1);"/>
+				<menuitem id="pacman-speed-normal" type="radio" name="pacmanspeed" label="&pacman.speed-normal;" oncommand="pacmanNewGame(2);"/>
+				<menuitem id="pacman-speed-fast" type="radio" name="pacmanspeed" label="&pacman.speed-fast;" oncommand="pacmanNewGame(3);"/>
+				<menuitem id="pacman-speed-insane" type="radio" name="pacmanspeed" label="&pacman.speed-insane;" oncommand="pacmanNewGame(4);"/>
+			</menupopup>
+		</menu>
+		<menu label="&pacman.options;">
+			<menupopup>
+				<menuitem id="btn.highscores" label="&pacman.highscores;" command="cmd.highscores" accesskey="&pacman.key-highscores-menu;"/>
+				<menuitem id="btn.pause" label="&pacman.pause;" command="cmd.pause" accesskey="&pacman.key-pause-menu;"/>
+				<menuitem id="btn.sound" label="&pacman.sound;" command="cmd.sound" accesskey="&pacman.key-sound-menu;"/>
+				<menuseparator/>
+				<menuitem id="btn.about" label="&pacman.about;" command="cmd.about"/>
+			</menupopup>
+		</menu>
+	</menubar>
+
+	<stack id="pacman-main" class="pacman">
+		<hbox>
+			<stack id="pacman-spielfeld-stack">
+				<image src="chrome://pacman/skin/images/spielfeld.png"/>
+			</stack>
+		</hbox>
+		<hbox class="pacmanHUD">
+			<spacer flex="1"/>
+			<description id="pacman-hud-score" value=""/>
+			<spacer width="616"/>
+		</hbox>
+		<hbox class="pacmanHUD">
+			<spacer flex="1"/>
+			<description id="pacman-hud-message" value=""/>
+			<spacer flex="1"/>
+		</hbox>
+		<hbox class="pacmanHUD">
+			<spacer flex="1"/>
+			<description id="pacman-hud-level" value=""/>
+			<spacer width="3"/>
+		</hbox>
+		<hbox class="pacmanHUD" style="margin-top: 3px">
+			<spacer flex="1"/>
+			<vbox>
+				<hbox>
+					<image src="chrome://pacman/skin/images/pack_3_1.png" id="pacman-hud-leben1" width="44" height="44"/>
+					<image src="chrome://pacman/skin/images/pack_3_1.png" id="pacman-hud-leben2" width="44" height="44"/>
+				</hbox>
+			</vbox>
+			<spacer width="150"/>
+		</hbox>
+	</stack>
+</window>

@@ -1,0 +1,25 @@
+.pacman {
+	font-family: Courier, monospace;
+	font-size: 17pt;
+	font-weight: bold;
+	color: white;
+	background-color: #008000;
+}
+
+.pacmanHUD {
+	margin-top: 25px;
+}
+
+.pacman-hud-score {
+	text-align: right;
+}
+
+.pacman-hud-message {
+}
+
+.pacman-hud-level {
+	text-align: right;
+}
+
+.pacman-hud-leben {
+}

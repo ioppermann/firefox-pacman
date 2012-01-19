@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<overlay id="packmanOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+ 
+<script type="application/x-javascript" src="chrome://packman/content/packman.js"/>
+
+<menupopup id="menu_ToolsPopup">
+	<menuitem id="packman" label="Packman" oncommand="packmanLaunchGame()" insertbefore="devToolsSeparator"/>
+</menupopup>
+
+</overlay>

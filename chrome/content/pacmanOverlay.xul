@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<overlay id="pacmanOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<script type="application/x-javascript" src="chrome://pacman/content/scripts/pacmangame.js"/>
+<script type="application/x-javascript" src="chrome://pacman/content/scripts/windows.js"/>
+
+<menupopup id="menu_ToolsPopup">
+	<menuitem image="chrome://pacman/skin/images/logosmall.png" class="menuitem-iconic" id="pacman-menuitem" label="Pacman" oncommand="pacmanLaunchGame()" insertbefore="devToolsSeparator"/>
+</menupopup>
+
+</overlay>
